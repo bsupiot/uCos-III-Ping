@@ -137,3 +137,15 @@
                                                                 /*   DEF_DISABLED     Data structure clears DISABLED    */
                                                                 /*   DEF_ENABLED      Data structure clears ENABLED     */
 
+#define  DHCPc_CFG_NEGO_RETRY_CNT                          3    /* Number of lease negotiation retries                  */
+
+#define  DHCPc_CFG_DISCOVER_RETRY_CNT                      3    /* Number of attempts to transmit discover messages     */
+                                                                /* during the discover phase of the lease negotiation   */
+
+#define  DHCPc_CFG_REQUEST_RETRY_CNT                       3    /* Number of attemps to transmit request messages       */
+                                                                /* during the request phase of the lease negotiation    */
+
+
+
+
+

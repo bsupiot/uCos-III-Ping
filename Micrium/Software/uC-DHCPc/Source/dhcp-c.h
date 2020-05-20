@@ -1,24 +1,16 @@
 /*
 *********************************************************************************************************
-*                                               uC/DHCPc
-*                              Dynamic Host Configuration Protocol Client
+*                                              uC/DHCPc
+*                             Dynamic Host Configuration Protocol Client
 *
-*                         (c) Copyright 2004-2017; Micrium, Inc.; Weston, FL
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                  All rights reserved.  Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  uC/DHCP is provided in source form to registered licensees ONLY.  It is
-*                  illegal to distribute this source code to any third party unless you receive
-*                  written permission by an authorized Micrium representative.  Knowledge of
-*                  the source code may NOT be used to develop a similar product.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available.  Your honesty is greatly appreciated.
-*
-*                  You can find our product's user manual, API reference, release notes and
-*                  more information at: https://doc.micrium.com
-*
-*                  You can contact us at: http://www.micrium.com
 *********************************************************************************************************
 */
 
@@ -27,45 +19,44 @@
 *
 *                                             DHCP CLIENT
 *
-* Filename      : dhcp-c.h
-* Version       : V2.10.01
-* Programmer(s) : SR
+* Filename : dhcp-c.h
+* Version  : V2.11.00
 *********************************************************************************************************
-* Note(s)       : (1) Supports Dynamic Host Configuration Protocol as described in RFC #2131 with the
+* Note(s)  : (1) Supports Dynamic Host Configuration Protocol as described in RFC #2131 with the
 *                     following features/restrictions/constraints :
 *
-*                     (a) Dynamic Configuration of IPv4 Link-Local Addresses       RFC #3927
-*                     (b) Supports both infinite & temporary address leases,
-*                             with automatic renewal of lease if necessary
+*                (a) Dynamic Configuration of IPv4 Link-Local Addresses       RFC #3927
+*                (b) Supports both infinite & temporary address leases,
+*                        with automatic renewal of lease if necessary
 *
-*                 (2) To protect the validity & prevent the corruption of shared DHCP client resources,
-*                     the primary tasks of the DHCP client are prevented from running concurrently
-*                     through the use of a global DHCPc lock implementing protection by mutual exclusion.
+*            (2) To protect the validity & prevent the corruption of shared DHCP client resources,
+*                the primary tasks of the DHCP client are prevented from running concurrently
+*                through the use of a global DHCPc lock implementing protection by mutual exclusion.
 *
-*                     (a) The mechanism of protected mutual exclusion is irrelevant but MUST be implemented
-*                         in the following two functions :
+*                (a) The mechanism of protected mutual exclusion is irrelevant but MUST be implemented
+*                    in the following two functions :
 *
-*                             DHCPc_OS_Lock()                       acquire access to DHCP client
-*                             DHCPc_OS_Unlock()                     release access to DHCP client
+*                        DHCPc_OS_Lock()                       acquire access to DHCP client
+*                        DHCPc_OS_Unlock()                     release access to DHCP client
 *
-*                         implemented in
+*                    implemented in
 *
-*                             \<DHCPc>\OS\<os>\dhcp-c_os.*
+*                        \<DHCPc>\OS\<os>\dhcp-c_os.*
 *
-*                             where
-*                                     <DHCPc>                       directory path for DHCPc module
-*                                     <os>                          directory name for specific OS
+*                        where
+*                                <DHCPc>                       directory path for DHCPc module
+*                                <os>                          directory name for specific OS
 *
-*                     (b) Since this global lock implements mutual exclusion at the DHCP client task
-*                         level, critical sections are NOT required to prevent task-level concurrency in
-*                         the DHCP client.
+*                (b) Since this global lock implements mutual exclusion at the DHCP client task
+*                    level, critical sections are NOT required to prevent task-level concurrency in
+*                    the DHCP client.
 *
-*                 (3) Assumes the following versions (or more recent) of software modules are included in
-*                     the project build :
+*            (3) Assumes the following versions (or more recent) of software modules are included in
+*                the project build :
 *
-*                     (a) uC/TCP-IP V2.13.02
-*                     (b) uC/CPU    V1.27
-*                     (c) uC/LIB    V1.35.00
+*                (a) uC/TCP-IP V2.13.02
+*                (b) uC/CPU    V1.27
+*                (c) uC/LIB    V1.35.00
 *********************************************************************************************************
 */
 
@@ -110,7 +101,7 @@
 *********************************************************************************************************
 */
 
-#define  DHCPc_VERSION                                 21001u   /* See Note #1.                                         */
+#define  DHCPc_VERSION                                 21100u   /* See Note #1.                                         */
 
 
 /*
@@ -247,7 +238,7 @@ typedef  enum dhcp_c_err {
     DHCPc_ERR_IF_INVALID                             =   23,    /* IF invalid or disabled.                              */
     DHCPc_ERR_IF_NOT_MANAGED                         =   24,    /* IF NOT managed by DHCP client.                       */
     DHCPc_ERR_IF_OPT_NONE                            =   25,    /* DHCP opt NOT present on IF.                          */
-    DHCPc_ERR_IF_CFG_STATE                           =   26,    /* IP cfg state err.                                    */    
+    DHCPc_ERR_IF_CFG_STATE                           =   26,    /* IP cfg state err.                                    */
 
     DHCPc_ERR_IF_INFO_NONE_AVAIL                     =   30,    /* IF info  pool empty.                                 */
     DHCPc_ERR_IF_INFO_IF_USED                        =   31,    /* IF info  already already used for this IF.           */
@@ -658,8 +649,6 @@ typedef  enum dhcp_c_err {
 *                                  DHCPc TIME DELAY & RETRY DEFINES
 *********************************************************************************************************
 */
-
-#define  DHCPc_NEGO_MAX_RETRY                               3   /* Max nbr of nego retry.                               */
 
 #define  DHCPc_BACKOFF_DLY_INITIAL_MS                    2000   /* Initial dly                  (in ms).                */
 #define  DHCPc_BACKOFF_DLY_MAX_MS                       64000   /* Max exponential back-off dly (in ms).                */
@@ -1205,6 +1194,47 @@ CPU_INT32U   DHCPc_OS_TimeCalcElapsed_sec(CPU_INT32U   time_start,  /* Calculate
 #error  "                                  [     &&  <= 255]                    "
 #endif
 
+
+#ifndef  DHCPc_CFG_NEGO_RETRY_CNT
+#error  "DHCPc_CFG_NEGO_RETRY_CNT                not #define'd in 'dhcp-c_cfg.h'"
+#error  "                                  [MUST be  >=   1]                    "
+#error  "                                  [     &&  <= 255]                    "
+
+#elif   (DEF_CHK_VAL(DHCPc_CFG_NEGO_RETRY_CNT,       \
+                     1,                              \
+                     DEF_INT_08U_MAX_VAL) != DEF_OK)
+#error  "DHCPc_CFG_NEGO_RETRY_CNT          illegally #define'd in 'dhcp-c_cfg.h'"
+#error  "                                  [MUST be  >=   1]                    "
+#error  "                                  [     &&  <= 255]                    "
+#endif
+
+
+#ifndef  DHCPc_CFG_DISCOVER_RETRY_CNT
+#error  "DHCPc_CFG_DISCOVER_RETRY_CNT            not #define'd in 'dhcp-c_cfg.h'"
+#error  "                                  [MUST be  >=   1]                    "
+#error  "                                  [     &&  <= 255]                    "
+
+#elif   (DEF_CHK_VAL(DHCPc_CFG_DISCOVER_RETRY_CNT,   \
+                     1,                              \
+                     DEF_INT_08U_MAX_VAL) != DEF_OK)
+#error  "DHCPc_CFG_DISCOVER_RETRY_CNT      illegally #define'd in 'dhcp-c_cfg.h'"
+#error  "                                  [MUST be  >=   1]                    "
+#error  "                                  [     &&  <= 255]                    "
+#endif
+
+
+#ifndef  DHCPc_CFG_REQUEST_RETRY_CNT
+#error  "DHCPc_CFG_REQUEST_RETRY_CNT             not #define'd in 'dhcp-c_cfg.h'"
+#error  "                                  [MUST be  >=   1]                    "
+#error  "                                  [     &&  <= 255]                    "
+
+#elif   (DEF_CHK_VAL(DHCPc_CFG_REQUEST_RETRY_CNT,    \
+                     1,                              \
+                     DEF_INT_08U_MAX_VAL) != DEF_OK)
+#error  "DHCPc_CFG_REQUEST_RETRY_CNT       illegally #define'd in 'dhcp-c_cfg.h'"
+#error  "                                  [MUST be  >=   1]                    "
+#error  "                                  [     &&  <= 255]                    "
+#endif
 
 
 #ifndef  DHCPc_CFG_ARG_CHK_EXT_EN
