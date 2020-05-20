@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -29,7 +21,7 @@
 *                                       (INTERNET PROTOCOL v6)
 *
 * Filename : net_ipv6.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 * Note(s)  : (1) Supports Internet Protocol as described in RFC #2460, also known as IPv6, with the
 *                following restrictions/constraints :
@@ -42,24 +34,6 @@
 *                (c) IPv6 Security options   NOT           supported       RFC #4301
 *********************************************************************************************************
 */
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
-*                                            INCLUDE FILES
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-#include  <KAL/kal.h>
-
-#include  "../../Source/net_cfg_net.h"
-#include  "../../Source/net_ip.h"
-#include  "../../Source/net_type.h"
-#include  "../../Source/net_tmr.h"
-
-#include  "../../IF/net_if.h"
-
 
 /*
 *********************************************************************************************************
@@ -82,6 +56,23 @@
 #ifndef  NET_IPv6_MODULE_PRESENT
 #define  NET_IPv6_MODULE_PRESENT
 
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
+*                                            INCLUDE FILES
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#include  <KAL/kal.h>
+
+#include  "../../Source/net_cfg_net.h"
+#include  "../../Source/net_ip.h"
+#include  "../../Source/net_type.h"
+#include  "../../Source/net_tmr.h"
+
+#include  "../../IF/net_if.h"
 
 
 /*

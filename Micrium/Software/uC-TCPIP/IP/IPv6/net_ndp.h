@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -29,7 +21,7 @@
 *                                    (NEIGHBOR DISCOVERY PROTOCOL)
 *
 * Filename : net_ndp.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 * Note(s)  : (1) Supports Neighbor Discovery Protocol as described in RFC #2461 with the
 *                following restrictions/constraints :
@@ -51,21 +43,6 @@
 /*
 *********************************************************************************************************
 *********************************************************************************************************
-*                                            INCLUDE FILES
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-#include  "../../Source/net_cfg_net.h"
-#include  "../../Source/net_type.h"
-#include  "../../Source/net_cache.h"
-#include  "../../Source/net_buf.h"
-#include  "net_icmpv6.h"
-
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
 *                                               MODULE
 *
 * Note(s) : (1) NDP Layer module is required for applications that requires IPv6 services.
@@ -81,6 +58,21 @@
 
 #ifndef  NET_NDP_MODULE_PRESENT
 #define  NET_NDP_MODULE_PRESENT
+
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
+*                                            INCLUDE FILES
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#include  "../../Source/net_cfg_net.h"
+#include  "../../Source/net_type.h"
+#include  "../../Source/net_cache.h"
+#include  "../../Source/net_buf.h"
+#include  "net_icmpv6.h"
 
 #ifdef   NET_NDP_MODULE_EN                                /* See Note #2.                                         */
 

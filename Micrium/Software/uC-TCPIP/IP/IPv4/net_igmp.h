@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -29,7 +21,7 @@
 *                                 (INTERNET GROUP MANAGEMENT PROTOCOL)
 *
 * Filename : net_igmp.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 * Note(s)  : (1) Internet Group Management Protocol ONLY required for network interfaces that require
 *                reception of IP class-D (multicast) packets (see RFC #1112, Section 3 'Levels of
@@ -57,20 +49,6 @@
 /*
 *********************************************************************************************************
 *********************************************************************************************************
-*                                            INCLUDE FILES
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-#include  "../../Source/net_cfg_net.h"
-#include  "../../Source/net_type.h"
-#include  "../../Source/net_tmr.h"
-#include  <lib_math.h>
-
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
 *                                               MODULE
 *
 * Note(s) : (1) IGMP Layer module is required only for IP multicast reception & IGMP group management
@@ -88,6 +66,19 @@
 #ifndef  NET_IGMP_MODULE_PRESENT
 #define  NET_IGMP_MODULE_PRESENT
 
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
+*                                            INCLUDE FILES
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#include  "../../Source/net_cfg_net.h"
+#include  "../../Source/net_type.h"
+#include  "../../Source/net_tmr.h"
+#include  <lib_math.h>
 
 #ifdef   NET_IGMP_MODULE_EN                                /* See Note #2.                                         */
 
@@ -111,7 +102,6 @@
 
 #define  NET_IGMP_HOST_GRP_NBR_MIN                         1
 #define  NET_IGMP_HOST_GRP_NBR_MAX       DEF_INT_16U_MAX_VAL    /* See Note #1.                                         */
-
 
 
 /*
@@ -153,6 +143,7 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
+
 
 /*
 *********************************************************************************************************
