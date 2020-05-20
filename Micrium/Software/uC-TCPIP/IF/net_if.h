@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -28,7 +20,7 @@
 *                                    NETWORK INTERFACE MANAGEMENT
 *
 * Filename : net_if.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 * Note(s)  : (1) Network Interface modules located in the following network directory :
 *
@@ -46,6 +38,18 @@
 /*
 *********************************************************************************************************
 *********************************************************************************************************
+*                                               MODULE
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#ifndef  NET_IF_MODULE_PRESENT
+#define  NET_IF_MODULE_PRESENT
+
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
 *                                            INCLUDE FILES
 *********************************************************************************************************
 *********************************************************************************************************
@@ -56,18 +60,6 @@
 #include  "../Source/net_buf.h"
 
 #include  <KAL/kal.h>
-
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
-*                                               MODULE
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-#ifndef  NET_IF_MODULE_PRESENT
-#define  NET_IF_MODULE_PRESENT
 
 
 /*
@@ -154,8 +146,12 @@
 */
 
 #define  NET_IF_NBR_BASE                                   0
-#define  NET_IF_NBR_BASE_CFGD                           (NET_IF_NBR_BASE       + NET_IF_NBR_IF_RESERVED)
 
+#if (NET_IF_CFG_LOOPBACK_EN == DEF_ENABLED)
+#define  NET_IF_NBR_BASE_CFGD                            NET_IF_NBR_BASE
+#else
+#define  NET_IF_NBR_BASE_CFGD                           (NET_IF_NBR_BASE + NET_IF_NBR_IF_RESERVED)
+#endif
 
 #define  NET_IF_NBR_NONE                                 NET_IF_NBR_MAX_VAL
 #define  NET_IF_NBR_MIN                                  NET_IF_NBR_IF_RESERVED
