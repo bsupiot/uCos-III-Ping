@@ -34,14 +34,14 @@ OBJS= $(SRC:.c=.o)
 CC = arm-linux-gnueabi-gcc
 
 CFLAGS = -march=armv7ve -mcpu=cortex-a7 -W -Wall -ansi $(INC)
-LDFLAGS = -pthread -m32
+LDFLAGS = -pthread
 DEFAULT = main
 
 all: $(DEFAULT)
 
 main: $(OBJS)
 	@mkdir -p $(OUTPUT)
-	$(CC) $(LDFLAGS) $(CFLAGS) $(INC) -o main.elf $(OUTPUT)/obj/$(OBJS)
+	$(CC) $(LDFLAGS) $(CFLAGS) $(INC) -o main.elf $(OUTPUT)/obj/*
 
 clean:
 	$(shell rm -rf $(OUTPUT))
