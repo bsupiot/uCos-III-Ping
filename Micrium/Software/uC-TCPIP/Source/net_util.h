@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -28,7 +20,7 @@
 *                                       NETWORK UTILITY LIBRARY
 *
 * Filename : net_util.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 * Note(s)  : (1) NO compiler-supplied standard library functions are used by the network protocol suite.
 *                'net_util.*' implements ALL network-specific library functions.
@@ -36,6 +28,18 @@
 *                See also 'net.h  NETWORK INCLUDE FILES  Note #3'.
 *********************************************************************************************************
 */
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
+*                                               MODULE
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#ifndef  NET_UTIL_MODULE_PRESENT
+#define  NET_UTIL_MODULE_PRESENT
+
 
 /*
 *********************************************************************************************************
@@ -49,17 +53,6 @@
 #include  <lib_mem.h>
 #include  "net_tmr.h"
 #include  "net_type.h"
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
-*                                               MODULE
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-#ifndef  NET_UTIL_MODULE_PRESENT
-#define  NET_UTIL_MODULE_PRESENT
 
 
 /*
@@ -153,40 +146,40 @@
 #define  NET_UTIL_VAL_GET_NET_16(addr)                          MEM_VAL_GET_INT16U_BIG(addr)
 #define  NET_UTIL_VAL_GET_NET_32(addr)                          MEM_VAL_GET_INT32U_BIG(addr)
                                                                                         /* See Notes #1a2, #2a1, & #2b2.*/
-#define  NET_UTIL_VAL_SET_NET_16(addr, val)                     MEM_VAL_SET_INT16U_BIG(addr, val)
-#define  NET_UTIL_VAL_SET_NET_32(addr, val)                     MEM_VAL_SET_INT32U_BIG(addr, val)
+#define  NET_UTIL_VAL_SET_NET_16(addr, val)                     MEM_VAL_SET_INT16U_BIG((addr), (val))
+#define  NET_UTIL_VAL_SET_NET_32(addr, val)                     MEM_VAL_SET_INT32U_BIG((addr), (val))
 
                                                                                         /* See Notes #1a1 & #2b.        */
-#define  NET_UTIL_VAL_COPY_GET_NET_16(addr_dest, addr_src)      MEM_VAL_COPY_GET_INT16U_BIG(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_GET_NET_32(addr_dest, addr_src)      MEM_VAL_COPY_GET_INT32U_BIG(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_GET_NET(addr_dest, addr_src, size)   MEM_VAL_COPY_GET_INTU_BIG(addr_dest, addr_src, size)
+#define  NET_UTIL_VAL_COPY_GET_NET_16(addr_dest, addr_src)      MEM_VAL_COPY_GET_INT16U_BIG((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_GET_NET_32(addr_dest, addr_src)      MEM_VAL_COPY_GET_INT32U_BIG((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_GET_NET(addr_dest, addr_src, size)   MEM_VAL_COPY_GET_INTU_BIG((addr_dest), (addr_src), (size))
                                                                                         /* See Notes #1a2 & #2b.        */
-#define  NET_UTIL_VAL_COPY_SET_NET_16(addr_dest, addr_src)      MEM_VAL_COPY_SET_INT16U_BIG(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_SET_NET_32(addr_dest, addr_src)      MEM_VAL_COPY_SET_INT32U_BIG(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_SET_NET(addr_dest, addr_src, size)   MEM_VAL_COPY_SET_INTU_BIG(addr_dest, addr_src, size)
+#define  NET_UTIL_VAL_COPY_SET_NET_16(addr_dest, addr_src)      MEM_VAL_COPY_SET_INT16U_BIG((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_SET_NET_32(addr_dest, addr_src)      MEM_VAL_COPY_SET_INT32U_BIG((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_SET_NET(addr_dest, addr_src, size)   MEM_VAL_COPY_SET_INTU_BIG((addr_dest), (addr_src), (size))
 
 
                                                                                         /* See Notes #1b, #2a2, & #2b1. */
 #define  NET_UTIL_VAL_GET_HOST_16(addr)                         MEM_VAL_GET_INT16U(addr)
 #define  NET_UTIL_VAL_GET_HOST_32(addr)                         MEM_VAL_GET_INT32U(addr)
                                                                                         /* See Notes #1b, #2a1, & #2b2. */
-#define  NET_UTIL_VAL_SET_HOST_16(addr, val)                    MEM_VAL_SET_INT16U(addr, val)
-#define  NET_UTIL_VAL_SET_HOST_32(addr, val)                    MEM_VAL_SET_INT32U(addr, val)
+#define  NET_UTIL_VAL_SET_HOST_16(addr, val)                    MEM_VAL_SET_INT16U((addr), (val))
+#define  NET_UTIL_VAL_SET_HOST_32(addr, val)                    MEM_VAL_SET_INT32U((addr), (val))
 
                                                                                         /* See Notes #1b & #2b.         */
-#define  NET_UTIL_VAL_COPY_GET_HOST_16(addr_dest, addr_src)     MEM_VAL_COPY_GET_INT16U(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_GET_HOST_32(addr_dest, addr_src)     MEM_VAL_COPY_GET_INT32U(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_GET_HOST(addr_dest, addr_src, size)  MEM_VAL_COPY_GET_INTU(addr_dest, addr_src, size)
+#define  NET_UTIL_VAL_COPY_GET_HOST_16(addr_dest, addr_src)     MEM_VAL_COPY_GET_INT16U((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_GET_HOST_32(addr_dest, addr_src)     MEM_VAL_COPY_GET_INT32U((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_GET_HOST(addr_dest, addr_src, size)  MEM_VAL_COPY_GET_INTU((addr_dest), (addr_src), (size))
                                                                                         /* See Notes #1b & #2b.         */
-#define  NET_UTIL_VAL_COPY_SET_HOST_16(addr_dest, addr_src)     MEM_VAL_COPY_SET_INT16U(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_SET_HOST_32(addr_dest, addr_src)     MEM_VAL_COPY_SET_INT32U(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_SET_HOST(addr_dest, addr_src, size)  MEM_VAL_COPY_SET_INTU(addr_dest, addr_src, size)
+#define  NET_UTIL_VAL_COPY_SET_HOST_16(addr_dest, addr_src)     MEM_VAL_COPY_SET_INT16U((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_SET_HOST_32(addr_dest, addr_src)     MEM_VAL_COPY_SET_INT32U((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_SET_HOST(addr_dest, addr_src, size)  MEM_VAL_COPY_SET_INTU((addr_dest), (addr_src), (size))
 
 
                                                                                         /* See Notes #1b & #2b.         */
-#define  NET_UTIL_VAL_COPY_16(addr_dest, addr_src)              MEM_VAL_COPY_16(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY_32(addr_dest, addr_src)              MEM_VAL_COPY_32(addr_dest, addr_src)
-#define  NET_UTIL_VAL_COPY(addr_dest, addr_src, size)           MEM_VAL_COPY(addr_dest, addr_src, size)
+#define  NET_UTIL_VAL_COPY_16(addr_dest, addr_src)              MEM_VAL_COPY_16((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY_32(addr_dest, addr_src)              MEM_VAL_COPY_32((addr_dest), (addr_src))
+#define  NET_UTIL_VAL_COPY(addr_dest, addr_src, size)           MEM_VAL_COPY((addr_dest), (addr_src), (size))
 
 
 #define  NET_UTIL_VAL_SWAP_ORDER(addr)                          MEM_VAL_BIG_TO_LITTLE_32(addr)
@@ -211,166 +204,166 @@
 *********************************************************************************************************
 */
 
-#define  NET_UTIL_IPv6_ADDR_COPY(addr_src, addr_dest)           addr_dest.Addr[0]  = addr_src.Addr[0];  \
-                                                                addr_dest.Addr[1]  = addr_src.Addr[1];  \
-                                                                addr_dest.Addr[2]  = addr_src.Addr[2];  \
-                                                                addr_dest.Addr[3]  = addr_src.Addr[3];  \
-                                                                addr_dest.Addr[4]  = addr_src.Addr[4];  \
-                                                                addr_dest.Addr[5]  = addr_src.Addr[5];  \
-                                                                addr_dest.Addr[6]  = addr_src.Addr[6];  \
-                                                                addr_dest.Addr[7]  = addr_src.Addr[7];  \
-                                                                addr_dest.Addr[8]  = addr_src.Addr[8];  \
-                                                                addr_dest.Addr[9]  = addr_src.Addr[9];  \
-                                                                addr_dest.Addr[10] = addr_src.Addr[10]; \
-                                                                addr_dest.Addr[11] = addr_src.Addr[11]; \
-                                                                addr_dest.Addr[12] = addr_src.Addr[12]; \
-                                                                addr_dest.Addr[13] = addr_src.Addr[13]; \
-                                                                addr_dest.Addr[14] = addr_src.Addr[14]; \
-                                                                addr_dest.Addr[15] = addr_src.Addr[15];
+#define  NET_UTIL_IPv6_ADDR_COPY(addr_src, addr_dest)           (addr_dest).Addr[0]  = (addr_src).Addr[0];  \
+                                                                (addr_dest).Addr[1]  = (addr_src).Addr[1];  \
+                                                                (addr_dest).Addr[2]  = (addr_src).Addr[2];  \
+                                                                (addr_dest).Addr[3]  = (addr_src).Addr[3];  \
+                                                                (addr_dest).Addr[4]  = (addr_src).Addr[4];  \
+                                                                (addr_dest).Addr[5]  = (addr_src).Addr[5];  \
+                                                                (addr_dest).Addr[6]  = (addr_src).Addr[6];  \
+                                                                (addr_dest).Addr[7]  = (addr_src).Addr[7];  \
+                                                                (addr_dest).Addr[8]  = (addr_src).Addr[8];  \
+                                                                (addr_dest).Addr[9]  = (addr_src).Addr[9];  \
+                                                                (addr_dest).Addr[10] = (addr_src).Addr[10]; \
+                                                                (addr_dest).Addr[11] = (addr_src).Addr[11]; \
+                                                                (addr_dest).Addr[12] = (addr_src).Addr[12]; \
+                                                                (addr_dest).Addr[13] = (addr_src).Addr[13]; \
+                                                                (addr_dest).Addr[14] = (addr_src).Addr[14]; \
+                                                                (addr_dest).Addr[15] = (addr_src).Addr[15];
 
-#define  NET_UTIL_IPv6_ADDR_SET_UNSPECIFIED(addr)               addr.Addr[0]   = DEF_BIT_NONE; \
-                                                                addr.Addr[1]   = DEF_BIT_NONE; \
-                                                                addr.Addr[2]   = DEF_BIT_NONE; \
-                                                                addr.Addr[3]   = DEF_BIT_NONE; \
-                                                                addr.Addr[4]   = DEF_BIT_NONE; \
-                                                                addr.Addr[5]   = DEF_BIT_NONE; \
-                                                                addr.Addr[6]   = DEF_BIT_NONE; \
-                                                                addr.Addr[7]   = DEF_BIT_NONE; \
-                                                                addr.Addr[8]   = DEF_BIT_NONE; \
-                                                                addr.Addr[9]   = DEF_BIT_NONE; \
-                                                                addr.Addr[10]  = DEF_BIT_NONE; \
-                                                                addr.Addr[11]  = DEF_BIT_NONE; \
-                                                                addr.Addr[12]  = DEF_BIT_NONE; \
-                                                                addr.Addr[13]  = DEF_BIT_NONE; \
-                                                                addr.Addr[14]  = DEF_BIT_NONE; \
-                                                                addr.Addr[15]  = DEF_BIT_NONE;
+#define  NET_UTIL_IPv6_ADDR_SET_UNSPECIFIED(addr)               (addr).Addr[0]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[1]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[2]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[3]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[4]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[5]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[6]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[7]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[8]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[9]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[10]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[11]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[12]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[13]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[14]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[15]  = DEF_BIT_NONE;
 
-#define  NET_UTIL_IPv6_ADDR_IS_UNSPECIFIED(addr)              ((addr.Addr[0]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[1]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[2]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[3]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[4]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[5]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[6]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[7]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[8]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[9]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[10] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[11] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[12] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[13] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[14] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[15] == DEF_BIT_NONE))
+#define  NET_UTIL_IPv6_ADDR_IS_UNSPECIFIED(addr)              (((addr).Addr[0]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[1]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[2]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[3]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[4]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[5]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[6]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[7]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[8]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[9]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[10] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[11] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[12] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[13] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[14] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[15] == DEF_BIT_NONE))
 
-#define  NET_UTIL_IPv6_ADDR_SET_LOOPBACK(addr)                  addr.Addr[0]   = DEF_BIT_NONE; \
-                                                                addr.Addr[1]   = DEF_BIT_NONE; \
-                                                                addr.Addr[2]   = DEF_BIT_NONE; \
-                                                                addr.Addr[3]   = DEF_BIT_NONE; \
-                                                                addr.Addr[4]   = DEF_BIT_NONE; \
-                                                                addr.Addr[5]   = DEF_BIT_NONE; \
-                                                                addr.Addr[6]   = DEF_BIT_NONE; \
-                                                                addr.Addr[7]   = DEF_BIT_NONE; \
-                                                                addr.Addr[8]   = DEF_BIT_NONE; \
-                                                                addr.Addr[9]   = DEF_BIT_NONE; \
-                                                                addr.Addr[10]  = DEF_BIT_NONE; \
-                                                                addr.Addr[11]  = DEF_BIT_NONE; \
-                                                                addr.Addr[12]  = DEF_BIT_NONE; \
-                                                                addr.Addr[13]  = DEF_BIT_NONE; \
-                                                                addr.Addr[14]  = DEF_BIT_NONE; \
-                                                                addr.Addr[15]  = DEF_BIT_00;
+#define  NET_UTIL_IPv6_ADDR_SET_LOOPBACK(addr)                  (addr).Addr[0]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[1]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[2]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[3]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[4]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[5]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[6]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[7]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[8]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[9]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[10]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[11]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[12]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[13]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[14]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[15]  = DEF_BIT_00;
 
-#define  NET_UTIL_IPv6_ADDR_IS_LOOPBACK(addr)                 ((addr.Addr[0]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[1]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[2]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[3]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[4]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[5]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[6]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[7]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[8]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[9]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[10] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[11] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[12] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[13] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[14] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[15] == DEF_BIT_00))
+#define  NET_UTIL_IPv6_ADDR_IS_LOOPBACK(addr)                 (((addr).Addr[0]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[1]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[2]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[3]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[4]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[5]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[6]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[7]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[8]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[9]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[10] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[11] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[12] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[13] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[14] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[15] == DEF_BIT_00))
 
-#define  NET_UTIL_IPv6_ADDR_SET_MCAST_ALL_NODES(addr)           addr.Addr[0]   = 0xFF;         \
-                                                                addr.Addr[1]   = 0x02;         \
-                                                                addr.Addr[2]   = DEF_BIT_NONE; \
-                                                                addr.Addr[3]   = DEF_BIT_NONE; \
-                                                                addr.Addr[4]   = DEF_BIT_NONE; \
-                                                                addr.Addr[5]   = DEF_BIT_NONE; \
-                                                                addr.Addr[6]   = DEF_BIT_NONE; \
-                                                                addr.Addr[7]   = DEF_BIT_NONE; \
-                                                                addr.Addr[8]   = DEF_BIT_NONE; \
-                                                                addr.Addr[9]   = DEF_BIT_NONE; \
-                                                                addr.Addr[10]  = DEF_BIT_NONE; \
-                                                                addr.Addr[11]  = DEF_BIT_NONE; \
-                                                                addr.Addr[12]  = DEF_BIT_NONE; \
-                                                                addr.Addr[13]  = DEF_BIT_NONE; \
-                                                                addr.Addr[14]  = DEF_BIT_NONE; \
-                                                                addr.Addr[15]  = 0x01;
+#define  NET_UTIL_IPv6_ADDR_SET_MCAST_ALL_NODES(addr)           (addr).Addr[0]   = 0xFF;         \
+                                                                (addr).Addr[1]   = 0x02;         \
+                                                                (addr).Addr[2]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[3]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[4]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[5]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[6]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[7]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[8]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[9]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[10]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[11]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[12]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[13]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[14]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[15]  = 0x01;
 
-#define  NET_UTIL_IPv6_ADDR_IS_MCAST_ALL_NODES(addr)          ((addr.Addr[0]  == 0xFF)         && \
-                                                               (addr.Addr[1]  == 0x02)         && \
-                                                               (addr.Addr[2]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[3]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[4]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[5]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[6]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[7]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[8]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[9]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[10] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[11] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[12] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[13] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[14] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[15] == 0x01))
+#define  NET_UTIL_IPv6_ADDR_IS_MCAST_ALL_NODES(addr)          (((addr).Addr[0]  == 0xFF)         && \
+                                                               ((addr).Addr[1]  == 0x02)         && \
+                                                               ((addr).Addr[2]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[3]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[4]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[5]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[6]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[7]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[8]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[9]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[10] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[11] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[12] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[13] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[14] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[15] == 0x01))
 
-#define  NET_UTIL_IPv6_ADDR_SET_MCAST_ALL_ROUTERS(addr)         addr.Addr[0]   = 0xFF;         \
-                                                                addr.Addr[1]   = 0x02;         \
-                                                                addr.Addr[2]   = DEF_BIT_NONE; \
-                                                                addr.Addr[3]   = DEF_BIT_NONE; \
-                                                                addr.Addr[4]   = DEF_BIT_NONE; \
-                                                                addr.Addr[5]   = DEF_BIT_NONE; \
-                                                                addr.Addr[6]   = DEF_BIT_NONE; \
-                                                                addr.Addr[7]   = DEF_BIT_NONE; \
-                                                                addr.Addr[8]   = DEF_BIT_NONE; \
-                                                                addr.Addr[9]   = DEF_BIT_NONE; \
-                                                                addr.Addr[10]  = DEF_BIT_NONE; \
-                                                                addr.Addr[11]  = DEF_BIT_NONE; \
-                                                                addr.Addr[12]  = DEF_BIT_NONE; \
-                                                                addr.Addr[13]  = DEF_BIT_NONE; \
-                                                                addr.Addr[14]  = DEF_BIT_NONE; \
-                                                                addr.Addr[15]  = 0x02;
+#define  NET_UTIL_IPv6_ADDR_SET_MCAST_ALL_ROUTERS(addr)         (addr).Addr[0]   = 0xFF;         \
+                                                                (addr).Addr[1]   = 0x02;         \
+                                                                (addr).Addr[2]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[3]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[4]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[5]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[6]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[7]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[8]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[9]   = DEF_BIT_NONE; \
+                                                                (addr).Addr[10]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[11]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[12]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[13]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[14]  = DEF_BIT_NONE; \
+                                                                (addr).Addr[15]  = 0x02;
 
-#define  NET_UTIL_IPv6_ADDR_IS_MCAST_ALL_ROUTERS(addr)        ((addr.Addr[0]  == 0xFF)         && \
-                                                               (addr.Addr[1]  == 0x02)         && \
-                                                               (addr.Addr[2]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[3]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[4]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[5]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[6]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[7]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[8]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[9]  == DEF_BIT_NONE) && \
-                                                               (addr.Addr[10] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[11] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[12] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[13] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[14] == DEF_BIT_NONE) && \
-                                                               (addr.Addr[15] == 0x02))
+#define  NET_UTIL_IPv6_ADDR_IS_MCAST_ALL_ROUTERS(addr)        (((addr).Addr[0]  == 0xFF)         && \
+                                                               ((addr).Addr[1]  == 0x02)         && \
+                                                               ((addr).Addr[2]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[3]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[4]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[5]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[6]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[7]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[8]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[9]  == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[10] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[11] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[12] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[13] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[14] == DEF_BIT_NONE) && \
+                                                               ((addr).Addr[15] == 0x02))
 
-#define  NET_UTIL_IPv6_ADDR_IS_LINK_LOCAL(addr)               ((addr.Addr[0]  == 0xFE) && \
-                                                               (addr.Addr[1]  == 0x80))
+#define  NET_UTIL_IPv6_ADDR_IS_LINK_LOCAL(addr)               (((addr).Addr[0]  == 0xFE) && \
+                                                               ((addr).Addr[1]  == 0x80))
 
-#define  NET_UTIL_IPv6_ADDR_IS_SITE_LOCAL(addr)               ((addr.Addr[0]  == 0xFE) && \
-                                                               (addr.Addr[1]  == 0xC0))
+#define  NET_UTIL_IPv6_ADDR_IS_SITE_LOCAL(addr)               (((addr).Addr[0]  == 0xFE) && \
+                                                               ((addr).Addr[1]  == 0xC0))
 
-#define  NET_UTIL_IPv6_ADDR_IS_MULTICAST(addr)                 (addr.Addr[0]  == 0xFF)
+#define  NET_UTIL_IPv6_ADDR_IS_MULTICAST(addr)                 ((addr).Addr[0]  == 0xFF)
 
 
 /*

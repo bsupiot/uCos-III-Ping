@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -29,7 +21,7 @@
 *                                   (TRANSMISSION CONTROL PROTOCOL)
 *
 * Filename : net_tcp.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 * Note(s)  : (1) Supports Transmission Control Protocol as described in RFC #793 with the following
 *                restrictions/constraints :
@@ -63,6 +55,29 @@
 
 /*
 *********************************************************************************************************
+*                                               MODULE
+*
+* Note(s) : (1) TCP Layer module is NOT required for UDP-to-Application API configuration.
+*
+*               See also 'net_cfg.h  TRANSPORT LAYER CONFIGURATION'
+*                      & 'net_cfg.h  USER DATAGRAM PROTOCOL LAYER CONFIGURATION'.
+*
+*               See also 'net_tcp.h  Note #2'.
+*
+*           (2) The following TCP-module-present configuration value MUST be pre-#define'd in
+*               'net_cfg_net.h' PRIOR to all other network modules that require TCP Layer
+*               configuration (see 'net_cfg_net.h  TCP LAYER CONFIGURATION  Note #2b') :
+*
+*                   NET_TCP_MODULE_EN
+*********************************************************************************************************
+*/
+
+#ifndef  NET_TCP_MODULE_PRESENT
+#define  NET_TCP_MODULE_PRESENT
+
+
+/*
+*********************************************************************************************************
 *********************************************************************************************************
 *                                            INCLUDE FILES
 *********************************************************************************************************
@@ -85,31 +100,7 @@
 #include  "net_tmr.h"
 #include  <KAL/kal.h>
 
-
-/*
-*********************************************************************************************************
-*                                               MODULE
-*
-* Note(s) : (1) TCP Layer module is NOT required for UDP-to-Application API configuration.
-*
-*               See also 'net_cfg.h  TRANSPORT LAYER CONFIGURATION'
-*                      & 'net_cfg.h  USER DATAGRAM PROTOCOL LAYER CONFIGURATION'.
-*
-*               See also 'net_tcp.h  Note #2'.
-*
-*           (2) The following TCP-module-present configuration value MUST be pre-#define'd in
-*               'net_cfg_net.h' PRIOR to all other network modules that require TCP Layer
-*               configuration (see 'net_cfg_net.h  TCP LAYER CONFIGURATION  Note #2b') :
-*
-*                   NET_TCP_MODULE_EN
-*********************************************************************************************************
-*/
-
-#ifndef  NET_TCP_MODULE_PRESENT
-#define  NET_TCP_MODULE_PRESENT
-
 #ifdef   NET_TCP_MODULE_EN                                 /* See Note #2.                                         */
-
 
 /*
 *********************************************************************************************************

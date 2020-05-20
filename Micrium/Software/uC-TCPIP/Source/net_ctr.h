@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -28,25 +20,9 @@
 *                                      NETWORK COUNTER MANAGEMENT
 *
 * Filename : net_ctr.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 */
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
-*                                            INCLUDE FILES
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-
-#include  <net_cfg.h>
-#include  "net_cfg_net.h"
-#include  "net_def.h"
-#include  <cpu.h>
-#include  <lib_def.h>
-
 
 /*
 *********************************************************************************************************
@@ -58,6 +34,21 @@
 
 #ifndef  NET_CTR_MODULE_PRESENT
 #define  NET_CTR_MODULE_PRESENT
+
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
+*                                            INCLUDE FILES
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#include  <net_cfg.h>
+#include  "net_cfg_net.h"
+#include  "net_def.h"
+#include  <cpu.h>
+#include  <lib_def.h>
 
 
 /*
@@ -1447,9 +1438,9 @@ extern  NET_CTR_ERRS   Net_ErrCtrs;
 
 #if     (NET_CTR_CFG_STAT_EN == DEF_ENABLED)
     #define  NET_CTR_STAT_INC(stat_ctr)                             NET_CTR_INC(stat_ctr)
-    #define  NET_CTR_STAT_INC_LARGE(stat_ctr_hi, stat_ctr_lo)       NET_CTR_INC_LARGE(stat_ctr_hi, stat_ctr_lo)
+    #define  NET_CTR_STAT_INC_LARGE(stat_ctr_hi, stat_ctr_lo)       NET_CTR_INC_LARGE((stat_ctr_hi), (stat_ctr_lo))
 
-    #define  NET_CTR_STAT_ADD(stat_ctr, val)                        NET_CTR_ADD(stat_ctr, val)
+    #define  NET_CTR_STAT_ADD(stat_ctr, val)                        NET_CTR_ADD((stat_ctr), (val))
 
 #else
     #define  NET_CTR_STAT_INC(stat_ctr)
@@ -1463,7 +1454,7 @@ extern  NET_CTR_ERRS   Net_ErrCtrs;
 #if     (NET_CTR_CFG_ERR_EN == DEF_ENABLED)
 
     #define  NET_CTR_ERR_INC(err_ctr)                               NET_CTR_INC(err_ctr)
-    #define  NET_CTR_ERR_INC_LARGE(err_ctr_hi, err_ctr_lo)          NET_CTR_INC_LARGE(err_ctr_hi,  err_ctr_lo)
+    #define  NET_CTR_ERR_INC_LARGE(err_ctr_hi, err_ctr_lo)          NET_CTR_INC_LARGE((err_ctr_hi),  (err_ctr_lo))
 
 #else
 

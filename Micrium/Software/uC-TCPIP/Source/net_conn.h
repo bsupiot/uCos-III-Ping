@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -28,7 +20,7 @@
 *                                    NETWORK CONNECTION MANAGEMENT
 *
 * Filename : net_conn.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 * Note(s)  : (1) Supports network connections for local & remote addresses of the following :
 *
@@ -41,6 +33,18 @@
 *                    (2) Stream
 *********************************************************************************************************
 */
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
+*                                               MODULE
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#ifndef  NET_CONN_MODULE_PRESENT
+#define  NET_CONN_MODULE_PRESENT
+
 
 /*
 *********************************************************************************************************
@@ -59,19 +63,6 @@
 #include  <lib_def.h>
 #include  <cpu.h>
 #include  <cpu_core.h>
-
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
-*                                               MODULE
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-#ifndef  NET_CONN_MODULE_PRESENT
-#define  NET_CONN_MODULE_PRESENT
-
 
 
 /*

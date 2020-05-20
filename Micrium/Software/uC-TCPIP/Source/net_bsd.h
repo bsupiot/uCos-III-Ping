@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -28,7 +20,7 @@
 *                                            BSD 4.x LAYER
 *
 * Filename  : net_bsd.h
-* Version   : V3.05.00
+* Version   : V3.05.04
 *********************************************************************************************************
 * Note(s)   : (1) Supports BSD 4.x Layer API with the following restrictions/constraints :
 *
@@ -53,6 +45,27 @@
 /*
 *********************************************************************************************************
 *********************************************************************************************************
+*                                               MODULE
+*
+* Note(s) : (1) BSD 4.x Layer module is required for :
+*
+*               (a) Network sockets
+*               (b) Applications that require BSD 4.x application programming interface (API) :
+*                   (1) Data Types
+*                   (2) Macro's
+*                   (3) Functions
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+
+#ifndef  NET_BSD_MODULE_PRESENT
+#define  NET_BSD_MODULE_PRESENT
+
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
 *                                            INCLUDE FILES
 *********************************************************************************************************
 *********************************************************************************************************
@@ -69,27 +82,7 @@
 #include  "net_ascii.h"
 #include  <lib_def.h>
 
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
-*                                               MODULE
-*
-* Note(s) : (1) BSD 4.x Layer module is required for :
-*
-*               (a) Network sockets
-*               (b) Applications that require BSD 4.x application programming interface (API) :
-*                   (1) Data Types
-*                   (2) Macro's
-*                   (3) Functions
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
 #ifdef   NET_SOCK_BSD_EN
-
-#ifndef  NET_BSD_MODULE_PRESENT
-#define  NET_BSD_MODULE_PRESENT
 
 
 /*
@@ -119,6 +112,9 @@
 
 #define  NET_BSD_ADDR_LEN_MAX                    NET_SOCK_BSD_ADDR_LEN_MAX
 #define  NET_BSD_ADDR_IPv4_NBR_OCTETS_UNUSED     NET_SOCK_ADDR_IPv4_NBR_OCTETS_UNUSED
+
+#define  NI_MAXHOST                              1025u
+#define  NI_MAXSERV                                32u
 
                                                                 /* ------------------ FILE DESC SETS ------------------ */
 #define  FD_SETSIZE                NET_SOCK_NBR_SOCK            /* See Note #5a2A in "BSD 4.x SOCKET DATA TYPES" sect.  */
@@ -220,24 +216,24 @@
 
 /*
 *********************************************************************************************************
-*                                   BSD 4.x ADDRINFO ERROR DEFINES
+*                                 BSD 4.x ADDRINFO & NAMEINFO DEFINES
 *********************************************************************************************************
 */
 
-#undef  EAI_ADDRFAMILY
-#undef  EAI_AGAIN
-#undef  EAI_BADFLAGS
-#undef  EAI_FAIL
-#undef  EAI_FAMILY
-#undef  EAI_MEMORY
-#undef  EAI_NODATA
-#undef  EAI_NONAME
-#undef  EAI_SERVICE
-#undef  EAI_SOCKTYPE
-#undef  EAI_SYSTEM
-#undef  EAI_BADHINTS                                            /* Not Implemented.                                     */
-#undef  EAI_PROTOCOL                                            /* Not Implemented.                                     */
-#undef  EAI_MAX                                                 /* Not Implemented.                                     */
+#undef   EAI_ADDRFAMILY
+#undef   EAI_AGAIN
+#undef   EAI_BADFLAGS
+#undef   EAI_FAIL
+#undef   EAI_FAMILY
+#undef   EAI_MEMORY
+#undef   EAI_NODATA
+#undef   EAI_NONAME
+#undef   EAI_SERVICE
+#undef   EAI_SOCKTYPE
+#undef   EAI_SYSTEM
+#undef   EAI_BADHINTS                                           /* Not Implemented.                                     */
+#undef   EAI_PROTOCOL                                           /* Not Implemented.                                     */
+#undef   EAI_MAX                                                /* Not Implemented.                                     */
 
                                                                 /* ----- ERROR CODE DEFINITIONS FOR ADDRINFO. --------- */
 #define  EAI_ADDRFAMILY           1                             /* Address family for node_name not supported.          */
@@ -253,23 +249,29 @@
 #define  EAI_SYSTEM              11                             /* System error. See 'errno'.                           */
 
                                                                 /* Flag values for getaddrinfo().                       */
-#undef  AI_PASSIVE
-#undef  AI_CANONNAME
-#undef  AI_NUMERICHOST
-#undef  AI_NUMERICSERV
-#undef  AI_V4MAPPED
-#undef  AI_ALL
-#undef  AI_ADDRCONFIG
-#undef  AI_DEFAULT
+#undef   AI_PASSIVE
+#undef   AI_CANONNAME
+#undef   AI_NUMERICHOST
+#undef   AI_NUMERICSERV
+#undef   AI_V4MAPPED
+#undef   AI_ALL
+#undef   AI_ADDRCONFIG
+#undef   AI_DEFAULT
 
-#define AI_ADDRCONFIG               DEF_BIT_01
-#define AI_PASSIVE                  DEF_BIT_02
-#define AI_CANONNAME                DEF_BIT_03
-#define AI_NUMERICHOST              DEF_BIT_04
-#define AI_NUMERICSERV              DEF_BIT_05
-#define AI_V4MAPPED                 DEF_BIT_06
-#define AI_ALL                      DEF_BIT_07
+#define  AI_ADDRCONFIG            DEF_BIT_01
+#define  AI_PASSIVE               DEF_BIT_02
+#define  AI_CANONNAME             DEF_BIT_03
+#define  AI_NUMERICHOST           DEF_BIT_04
+#define  AI_NUMERICSERV           DEF_BIT_05
+#define  AI_V4MAPPED              DEF_BIT_06
+#define  AI_ALL                   DEF_BIT_07
 
+#define  NI_NOFQDN                DEF_BIT_00
+#define  NI_NUMERICHOST           DEF_BIT_01
+#define  NI_NAMEREQD              DEF_BIT_02
+#define  NI_NUMERICSERV           DEF_BIT_03
+#define  NI_DGRAM                 DEF_BIT_04
+#define  NET_BSD_NI_MAX_FLAG     (NI_NOFQDN | NI_NUMERICHOST | NI_NAMEREQD |NI_NUMERICSERV | NI_DGRAM)
 
 /*
 *********************************************************************************************************
@@ -763,13 +765,13 @@ extern "C" {
 
                                                                         /* ------------- LOCAL CONN FCNTS ------------- */
        int           bind        (               int         sock_id,
-                                  struct         sockaddr   *p_addr_local,
+                                        struct   sockaddr   *p_addr_local,
                                                  socklen_t   addr_len);
 
 
                                                                         /* ------------ CLIENT CONN FCNTS ------------- */
        int           connect     (               int         sock_id,
-                                  struct         sockaddr   *p_addr_remote,
+                                        struct   sockaddr   *p_addr_remote,
                                                  socklen_t   addr_len);
 
 
@@ -778,7 +780,7 @@ extern "C" {
                                                  int         sock_q_size);
 
        int           accept      (               int         sock_id,
-                                  struct         sockaddr   *p_addr_remote,
+                                        struct   sockaddr   *p_addr_remote,
                                                  socklen_t  *p_addr_len);
 
 
@@ -787,7 +789,7 @@ extern "C" {
                                                  void       *p_data_buf,
                                                 _size_t      data_buf_len,
                                                  int         flags,
-                                  struct         sockaddr   *p_addr_remote,
+                                        struct   sockaddr   *p_addr_remote,
                                                  socklen_t  *p_addr_len);
 
        ssize_t       recv        (               int         sock_id,
@@ -801,7 +803,7 @@ extern "C" {
                                                  void       *p_data,
                                                 _size_t      data_len,
                                                  int         flags,
-                                  struct         sockaddr   *p_addr_remote,
+                                        struct   sockaddr   *p_addr_remote,
                                                  socklen_t   addr_len);
 
        ssize_t       send        (               int         sock_id,
@@ -812,25 +814,32 @@ extern "C" {
 
                                                                         /* ------------ MULTIPLEX I/O FNCTS ----------- */
        int           select      (               int         desc_nbr_max,
-                                  struct         fd_set     *p_desc_rd,
-                                  struct         fd_set     *p_desc_wr,
-                                  struct         fd_set     *p_desc_err,
-                                  struct         timeval    *p_timeout);
+                                         struct  fd_set     *p_desc_rd,
+                                         struct  fd_set     *p_desc_wr,
+                                         struct  fd_set     *p_desc_err,
+                                         struct  timeval    *p_timeout);
 
 
                                                                         /* ---------------- CONV FCNTS ---------------- */
        in_addr_t     inet_addr   (               char       *p_addr);
 
        int           getpeername (               int         sock_id,
-                                  struct         sockaddr   *addr,
+                                         struct  sockaddr   *addr,
                                                  socklen_t  *addrlen);
 
        int           getsockname (               int         sock_id,
-                                  struct         sockaddr   *addr,
+                                         struct  sockaddr   *addr,
                                                  socklen_t  *addrlen);
 
+       int           getnameinfo (const  struct  sockaddr   *p_sockaddr,
+                                                 int         addrlen,
+                                                 char       *p_host_name,
+                                                 int         hostlen,
+                                                 char       *p_service_name,
+                                                 int         servicelen,
+                                                 int         flags);
+  
 const  char         *gai_strerror(               int         errcode);
-
 
        int           getaddrinfo (const          char       *p_node_name,
                                   const          char       *p_service_name,

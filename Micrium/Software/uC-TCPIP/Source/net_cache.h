@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -28,7 +20,7 @@
 *                                  NETWORK ADDRESS CACHE MANAGEMENT
 *
 * Filename : net_cache.h
-* Version  : V3.05.00
+* Version  : V3.06.00
 *********************************************************************************************************
 * Note(s)  : (1) Address cache management module ONLY required for network interfaces that require
 *                network-address-to-hardware-address bindings (see RFC #826 'Abstract').
@@ -44,23 +36,6 @@
 *                    (2) 128-bit IPv6
 *********************************************************************************************************
 */
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
-*                                            INCLUDE FILES
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-#include  "net_cfg_net.h"
-#include  "net_def.h"
-#include  "net_tmr.h"
-#include  "net_type.h"
-#include  "net_stat.h"
-#include  "net_err.h"
-#include  <cpu.h>
-#include  <KAL/kal.h>
 
 /*
 *********************************************************************************************************
@@ -84,9 +59,25 @@
 #ifndef  NET_CACHE_MODULE_PRESENT                               /* See Note #2b.                                        */
 #define  NET_CACHE_MODULE_PRESENT
 
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
+*                                            INCLUDE FILES
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#include  "net_cfg_net.h"
+#include  "net_def.h"
+#include  "net_tmr.h"
+#include  "net_type.h"
+#include  "net_stat.h"
+#include  "net_err.h"
+#include  <cpu.h>
+#include  <KAL/kal.h>
+
 #ifdef   NET_CACHE_MODULE_EN                                    /* See Note #2a.                                        */
-
-
 
 /*
 *********************************************************************************************************

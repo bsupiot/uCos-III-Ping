@@ -3,22 +3,14 @@
 *                                              uC/TCP-IP
 *                                      The Embedded TCP/IP Suite
 *
-*                         (c) Copyright 2004-2019; Silicon Laboratories Inc.,
-*                                400 W. Cesar Chavez, Austin, TX 78701
+*                    Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com
 *
-*                   All rights reserved. Protected by international copyright laws.
+*                                 SPDX-License-Identifier: APACHE-2.0
 *
-*                  Your use of this software is subject to your acceptance of the terms
-*                  of a Silicon Labs Micrium software license, which can be obtained by
-*                  contacting info@micrium.com. If you do not agree to the terms of this
-*                  license, you may not use this software.
+*               This software is subject to an open source license and is distributed by
+*                Silicon Laboratories Inc. pursuant to the terms of the Apache License,
+*                    Version 2.0 available at www.apache.org/licenses/LICENSE-2.0.
 *
-*                  Please help us continue to provide the Embedded community with the finest
-*                  software available. Your honesty is greatly appreciated.
-*
-*                    You can find our product's documentation at: doc.micrium.com
-*
-*                          For more information visit us at: www.micrium.com
 *********************************************************************************************************
 */
 
@@ -28,7 +20,7 @@
 *                                         NETWORK SOCKET LAYER
 *
 * Filename  : net_sock.h
-* Version   : V3.05.00
+* Version   : V3.05.04
 *********************************************************************************************************
 * Note(s)   : (1) Supports BSD 4.x Socket Layer with the following restrictions/constraints :
 *
@@ -87,6 +79,18 @@
 /*
 *********************************************************************************************************
 *********************************************************************************************************
+*                                               MODULE
+*********************************************************************************************************
+*********************************************************************************************************
+*/
+
+#ifndef  NET_SOCK_MODULE_PRESENT
+#define  NET_SOCK_MODULE_PRESENT
+
+
+/*
+*********************************************************************************************************
+*********************************************************************************************************
 *                                            INCLUDE FILES
 *********************************************************************************************************
 *********************************************************************************************************
@@ -111,18 +115,6 @@
 
 #include  <lib_def.h>
 #include  <KAL/kal.h>
-
-
-/*
-*********************************************************************************************************
-*********************************************************************************************************
-*                                               MODULE
-*********************************************************************************************************
-*********************************************************************************************************
-*/
-
-#ifndef  NET_SOCK_MODULE_PRESENT
-#define  NET_SOCK_MODULE_PRESENT
 
 
 /*
@@ -1433,7 +1425,7 @@ NET_SOCK_RTN_CODE   NetSock_OptGet                       (       NET_SOCK_ID    
 NET_SOCK_RTN_CODE   NetSock_OptSet                       (       NET_SOCK_ID                    sock_id,
                                                                  NET_SOCK_PROTOCOL              level,
                                                                  NET_SOCK_OPT_NAME              opt_name,
-                                                                 void                          *popt_val,
+                                                          const  void                          *popt_val,
                                                                  NET_SOCK_OPT_LEN               opt_len,
                                                                  NET_ERR                       *p_err);
 
