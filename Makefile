@@ -1,4 +1,3 @@
-
 #Directory
 PROJ_DIR = .
 OS_DIR = $(PROJ_DIR)/NXP/MCIMX6UL-EVK/Ping/OS3
@@ -25,10 +24,19 @@ INC+= -I $(PROJ_DIR)/NXP/BSP/MCIMX6UL-EVK
 	@mkdir -p $(OUTPUT)/obj
 	$(CC) $(CFLAGS) -o $(OUTPUT)/obj/$(notdir $@) -c $<
 
+%o: %.S
+	@mkdir -p $(OUTPUT)/obj
+	$(CC) $(CFLAGS) -o $(OUTPUT)/obj/$(notdir $@) -c $<
+
 #Source
 SRC= $(shell find . -name *.c)
 
+SRCS+= $(MICRIUM_SOFT_DIR)/uC-CPU/ARM-Cortex-A/ARMv7-A/GNU/cpu_a.S
+SRCS+= $$(MICRIUM_SOFT_DIR)/uCOS-III/Ports/ARM-Cortex-A/ARMv7-A/GNU/os_cpu_a_vfp-none.S
+
+
 OBJS= $(SRC:.c=.o)
+OBJSS= $(SRCS:.S=.o)
 
 #Command
 CC = arm-linux-gnueabi-gcc
