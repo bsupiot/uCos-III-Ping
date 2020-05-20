@@ -24,7 +24,7 @@ INC+= -I $(PROJ_DIR)/NXP/BSP/MCIMX6UL-EVK
 	@mkdir -p $(OUTPUT)/obj
 	$(CC) $(CFLAGS) -o $(OUTPUT)/obj/$(notdir $@) -c $<
 
-%o: %.S
+%.o: %.S
 	@mkdir -p $(OUTPUT)/obj
 	$(CC) $(CFLAGS) -o $(OUTPUT)/obj/$(notdir $@) -c $<
 
@@ -32,7 +32,7 @@ INC+= -I $(PROJ_DIR)/NXP/BSP/MCIMX6UL-EVK
 SRC= $(shell find . -name *.c)
 
 SRCS+= $(MICRIUM_SOFT_DIR)/uC-CPU/ARM-Cortex-A/ARMv7-A/GNU/cpu_a.S
-SRCS+= $$(MICRIUM_SOFT_DIR)/uCOS-III/Ports/ARM-Cortex-A/ARMv7-A/GNU/os_cpu_a_vfp-none.S
+SRCS+= $(MICRIUM_SOFT_DIR)/uCOS-III/Ports/ARM-Cortex-A/ARMv7-A/GNU/os_cpu_a_vfp-none.S
 
 
 OBJS= $(SRC:.c=.o)
@@ -47,11 +47,12 @@ DEFAULT = main
 
 all: $(DEFAULT)
 
-main: $(OBJS)
+main: $(OBJS) $(OBJSS)
 	@mkdir -p $(OUTPUT)
 	$(CC) $(LDFLAGS) $(CFLAGS) $(INC) -o main.elf $(OUTPUT)/obj/*
 
 clean:
 	$(shell rm -rf $(OUTPUT))
+	$(shell rm -rf ./main.elf)
 
 
