@@ -19,6 +19,7 @@ INC+= -I $(MICRIUM_SOFT_DIR)/uCOS-III/Source
 INC+= -I $(MICRIUM_SOFT_DIR)/uCOS-III/Ports/ARM-Cortex-A/ARMv7-A/GNU
 INC+= -I $(PROJ_DIR)/NXP/BSP/MCIMX6UL-EVK
 
+
 #Rules
 %.o: %.c
 	@mkdir -p $(OUTPUT)/obj
@@ -33,16 +34,17 @@ SRC= $(shell find . -name *.c)
 
 SRCS+= $(MICRIUM_SOFT_DIR)/uC-CPU/ARM-Cortex-A/ARMv7-A/GNU/cpu_a.S
 SRCS+= $(MICRIUM_SOFT_DIR)/uCOS-III/Ports/ARM-Cortex-A/ARMv7-A/GNU/os_cpu_a_vfp-none.S
+SRCS+= ./startup.S
 
 
 OBJS= $(SRC:.c=.o)
 OBJSS= $(SRCS:.S=.o)
 
 #Command
-CC = arm-linux-gnueabi-gcc
+CC = arm-none-eabi-gcc
 
-CFLAGS = -march=armv7ve -mcpu=cortex-a7 -W -Wall -ansi $(INC)
-LDFLAGS = -pthread
+CFLAGS = -mcpu=cortex-a7 -W -Wall -ansi $(INC) -std=gnu89 -g3
+LDFLAGS = --specs=nosys.specs -T linker.ld -g3
 DEFAULT = main
 
 all: $(DEFAULT)

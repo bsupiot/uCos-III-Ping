@@ -144,5 +144,5 @@ CPU_BOOLEAN  BSP_CCM_IsPLLLocked (CPU_ADDR  reg)
 
     p_reg = (CPU_REG32 *)reg;
 
-    return ((*p_reg & BSP_CCM_ANALOG_PLL_LOCK) ? DEF_TRUE : DEF_FALSE);
+    return DEF_TRUE; /*((*p_reg & BSP_CCM_ANALOG_PLL_LOCK) ? DEF_TRUE : DEF_FALSE);*/
 }
