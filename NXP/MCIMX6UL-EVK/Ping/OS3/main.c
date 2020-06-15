@@ -61,6 +61,8 @@
 #include  <bsp_sys.h>
 #include  <bsp_int.h>
 
+#include <uart/uart.h>
+
 
 /*
 *********************************************************************************************************
@@ -106,7 +108,6 @@ int main(void)
 {
     OS_ERR  os_err;
 
-
     BSP_SysInit();                                              /* Initialize the main clock                            */
     BSP_IntInit();                                              /* Initialize RAM interrupt vector table                */
     BSP_OS_TickInit(OSCfg_TickRate_Hz);                         /* Initialize kernel tick timer                         */
@@ -115,7 +116,9 @@ int main(void)
     Mem_Init();                                                 /* Initialize Memory Managment Module                   */
     CPU_IntDis();                                               /* Disable all Interrupts                               */
     CPU_Init();                                                 /* Initialize the uC/CPU services                       */
-
+ 
+    init_debug_uart(0x02020000, 115200); /* Initialize UART1
+    
     OSInit(&os_err);                                            /* Init uC/OS-III.                                      */
     if (os_err != OS_ERR_NONE) {
         while (1);

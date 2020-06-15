@@ -28,6 +28,8 @@ APP_DIR = $(PROJ_DIR)/NXP/MCIMX6UL-EVK/Ping
 APP_OS_DIR = $(APP_DIR)/OS3
 BSP_DIR = $(PROJ_DIR)/NXP/BSP
 
+DRIVERS_DIR = $(PROJ_DIR)/drivers
+
 KAL = $(COMMON_MODULE)/KAL/uCOS-III/kal.c
 BSP_INT = $(BSP_DIR)/Interrupts/bsp_int_armv7a_gicv2.c
 
@@ -46,6 +48,9 @@ INC+= -I $(UCOS_DIR)
 INC+= -I $(UCOS_DIR)/Source
 INC+= -I $(UCOS_DIR)/Ports/$(ARCH)/$(SUBARCH)/$(TOOLCHAIN)
 INC+= -I $(BSP_DIR)/MCIMX6UL-EVK
+INC+= -I $(DRIVERS_DIR)
+INC+= -I ./CORTEXA/Include
+INC+= -I ./CMSIS/Include
 
 
 #Rules
@@ -77,6 +82,7 @@ SRC+= $(addprefix $(UCOS_DIR)/Source/, 		$(shell cd $(UCOS_DIR)/Source; 		ls | g
 
 SRC+= $(addprefix $(UCOS_DIR)/Ports/$(ARCH)/$(SUBARCH)/, 		$(shell cd $(UCOS_DIR)/Ports/$(ARCH)/$(SUBARCH); 	ls | grep -e '\.c'))
 SRC+= $(addprefix $(BSP_DIR)/MCIMX6UL-EVK/, $(shell cd $(BSP_DIR)/MCIMX6UL-EVK; ls | grep -e '\.c'))
+SRC+= $(addprefix $(DRIVERS_DIR)/uart/, $(shell cd $(DRIVERS_DIR)/uart; ls | grep -e '\.c'))
 SRC+= $(KAL)
 SRC+= $(BSP_INT)
 
@@ -92,7 +98,7 @@ OBJSS= $(SRCS:.S=.o)
 #Command
 CC = arm-none-eabi-gcc
 
-CFLAGS = -mcpu=cortex-a7 -W -Wall -ansi $(INC) -std=gnu89 -g
+CFLAGS = -mcpu=cortex-a7 -W -Wall -ansi $(INC) -std=gnu89 -g -D CPU_MCIMX6G2CVK05
 LDFLAGS = --specs=nosys.specs -T linker.ld -g
 DEFAULT = main
 
