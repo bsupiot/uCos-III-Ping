@@ -117,7 +117,7 @@ int main(void)
     CPU_IntDis();                                               /* Disable all Interrupts                               */
     CPU_Init();                                                 /* Initialize the uC/CPU services                       */
  
-    init_debug_uart(0x02020000, 115200); /* Initialize UART1
+    init_debug_uart(0x02020000, 115200); /* Initialize UART1 */
     
     OSInit(&os_err);                                            /* Init uC/OS-III.                                      */
     if (os_err != OS_ERR_NONE) {
