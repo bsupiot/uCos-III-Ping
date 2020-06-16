@@ -36,7 +36,6 @@ typedef unsigned char U8;
 typedef unsigned short uint16_t;
 typedef unsigned char uint8_t;
 
-typedef int bool;
 #define true                1
 #define false               0
 

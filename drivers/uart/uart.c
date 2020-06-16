@@ -14,6 +14,8 @@
 #include <io.h>
 #include <uart/uart.h>
 
+#include <printf.h>
+
 #define UART_UFCR_RFDIV                        UART_UFCR_RFDIV_2
 //#define UART_UFCR_RFDIV                        UART_UFCR_RFDIV_4
 //#define UART_UFCR_RFDIV                        UART_UFCR_RFDIV_7
@@ -116,6 +118,10 @@ void init_debug_uart(void * uart_base, u32 baud)
 static char __log_buf[DIAG_BUFSIZE];
 static int diag_bp = 0;
 #endif
+
+void _putchar(char character){
+    sendchar(&character);
+}
 
 /*!
  * Output a character to the debug uart port

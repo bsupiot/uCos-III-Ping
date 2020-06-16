@@ -42,7 +42,7 @@
 #define  __APP_CFG_H__
 
 #include  <cpu.h>
-#include  <stdio.h>
+#include  <printf.h>
 
 
 /*
